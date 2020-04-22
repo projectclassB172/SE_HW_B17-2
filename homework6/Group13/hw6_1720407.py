@@ -5,10 +5,10 @@ print(best_language.replace("PHP","Python"))
 
 # 2.编写代码，提示用户输入1 - 7
 # 七个数字，分别代表周一到周日，打印输出“今天是周几”
-s="一二三四五六七"
+list_a=["一","二","三","四","五","六","七"]
 number=int(input("请输入1-7内数字："))
 if number in range(1,8):
-    print("今天为星期{}".format(s[number-1]))
+    print("今天为星期{}".format(list_a[number-1]))
 # 运行结果：请输入1-7内数字：6
 # 今天为星期六
 
