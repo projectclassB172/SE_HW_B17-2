@@ -1,6 +1,6 @@
 1 将给定字符串的PHP替换为Python      
 best_language = "PHP is the best programming language in the world! "
-
+import re
 best_language = "PHP is the best programming language in the world! "
 p = re.compile('PHP')
 replace = p.sub("Python",best_language)
@@ -34,7 +34,7 @@ print('读取到的电话号码： '+ r.group(0))
 5 利用正则表达式从下列不同的字符串中获取指定格式的日期。日期的格式为yyyy-mm-dd。
 '今天是2022/9/24', '今天是2017/09/25', '今天是2012-07-25', '今天是2020年04月25',
 
-day = '今天是2022/9/24,今天是2017/09/25,今天是2012-07-25,今天是2020年04月25'
-r = re.compile(r'\d{4}-\d{2}-\d{2}')
-r = res.findall(day)
-print("".join(r))
+import re
+d="'今天是2022/9/24', '今天是2017/09/25', '今天是2012-07-25', '今天是2020年04月25',"
+s=re.findall(r'\d\d\d\d-\d\d-\d\d',d)
+print('答案：符合指定日期格式的日期为：'+s[0])
