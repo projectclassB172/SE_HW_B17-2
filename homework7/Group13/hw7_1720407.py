@@ -35,11 +35,11 @@ def func(s):
     list_a=list(s)
     dict_a={"数字个数:":0,"字母个数:":0,"空格个数:":0,"其它个数:":0}
     for i in list_a:
-        if i>='0' and i<='9':
+        if i.isdigit():
             dict_a["数字个数:"]+=1
-        elif i>='a' and i<='z' or i>='A' and i<='Z':
+        elif i.isalpha():
             dict_a["字母个数:"]+=1
-        elif i==' ':
+        elif i.isspace():
             dict_a["空格个数:"]+=1
         else:
             dict_a["其它个数:"]+=1
