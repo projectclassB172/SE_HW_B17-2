@@ -1,0 +1,91 @@
+import random
+class Property():
+    def __init__(self,name,level,nike):
+        #adidas表示当前生命值，nike表示最大生命值
+        self.name=name
+        self.level=level
+        self.adidas=nike
+        self.nike=nike
+class Hero(Property):
+    def __init__(self,name,level,nike,race):
+        super().__init__(name,level,nike)
+        self.race=race
+        if self.race=='人类':
+            self.agillity=0.4
+        elif self.race=='精灵':
+            self.agillity=0.7
+    def attack(self,Monster):
+        m=random.randint(0,self.level*10)
+        Monster.defense(m)
+    def defense(self,m):
+        df=random.random()
+        if df>self.agillity:
+            self.adidas-=m
+            if self.adidas>0:
+                print("{}受到了{}点攻击,当前第{}级,生命值为{}".format(self.name,m,self.level,self.adidas))
+            else:
+                print("{}受到了{}点攻击,当前生命值为0,失败了".format(self.name, m))
+        else:
+            print("{}躲避掉了攻击,当前第{}级,生命值为{}".format(self.name,self.level,self.adidas))
+    def upgrade(self):
+        self.level+=1
+        self.nike=self.nike+10
+        self.adidas=self.nike
+        print("{}赢了怪兽升到{}级,当前生命值{}".format(self.name,self.level,self.adidas))
+class Monster(Property):
+    def __init__(self,name,level,nike):
+        super().__init__(name,level,nike)
+    def attack(self,Hero):
+        m=random.randint(0,self.level*10)
+        Hero.defense(m)
+    def defense(self,m):
+        self.adidas-=m
+        if self.adidas>0:
+            print("{}受到了{}点攻击,当前生命值为{}".format(self.name,m,self.adidas))
+        else:
+            print("{}受到了{}点攻击,当前生命值为0,阵亡".format(self.name, m))
+class Bigms(Property):
+    def __init__(self,name,level,nike):
+        super().__init__(name,level,nike)
+        # shield为血条
+        self.shield=5
+    def attack(self, Hero):
+        m = random.randint(0,self.level*10)
+        Hero.defense(m)
+    def defense(self,m):
+        self.shield-=1
+        if self.shield<=0:
+            self.adidas-=m
+        if self.shield>0:
+                print("{}受到了{}点攻击,盾牌减少1，当前护盾为{}".format(self.name, m, self.shield))
+        else:
+            if self.adidas>0:
+                print("{}受到了{}点攻击,当前生命值为{}".format(self.name,m,self.adidas))
+            else:
+                print("{}受到了{}点攻击,当前生命值为0,阵亡".format(self.name, m))
+def main():
+    hero_level=random.randint(1,3)
+    hero=Hero("无双剑姬",hero_level,30,'elf')
+    m1=Monster("提莫",1,30)
+    m2= Monster("亚索",2,40)
+    bm=Bigms("纳什男爵",3,80)
+    list=[m1,m2,bm]
+    round=1
+    while True:
+        if list[0].adidas>0:
+            print('-'*21,"Round{}".format(round),'-'*21)
+            hero.attack(list[0])
+            if list[0].adidas>0:
+                list[0].attack(hero)
+            else:
+                hero.upgrade()
+                del list[0]
+            round+=1
+        if len(list) == 0:
+            print("{}胜利了!".format(hero.name))
+            break
+        if hero.adidas<=0:
+            print("{}失败了!".format(hero.name))
+            break
+if __name__=='__main__':
+    main()
