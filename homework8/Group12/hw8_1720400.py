@@ -1,35 +1,35 @@
-import random  as  rn
+import random  as  rd
 class hero:
     def __init__(self, name, lv, race, maxblood ):
         self.name = name
-        self.lv = lv # max_lv = 3
+        self.lv = lv # 英雄级别
         self.race = race
         self.maxblood = maxblood
         self.blood = maxblood
         if self.race == 'humanity':
-            self.flexibility = 0.2
+            self.flexibility = 0.3
         else :
             self.flexibility = 0.4
         if self.lv == 1:
-            self.att = rn.randint(0, 10)
+            self.att = rd.randint(0, 10)
         elif self.lv == 2:
-            self.att = rn.randint(0, 20)
+            self.att = rd.randint(0, 20)
         elif self.lv == 3:
-            self.att = rn.randint(0, 30)
+            self.att = rd.randint(0, 30)
 
-    def attack(self, beattacked):
-        if beattacked.has_living():
+    def attack(self, attacked):
+        if attacked.has_living():
             if self.lv == 1:
-                self.att = rn.randint(0, 10)
+                self.att = rd.randint(0, 10)
             elif self.lv == 2:
-                self.att = rn.randint(0, 20)
+                self.att = rd.randint(0, 20)
             elif self.lv == 3:
-                self.att = rn.randint(0, 30)
+                self.att = rd.randint(0, 30)
             print(self.att)
-            beattacked.minus_blood(self.att)
-        if beattacked.blood <= (beattacked.maxblood + 10) & beattacked.lv == 3:
-            print(beattacked.name+ '护盾消失')
-        print(beattacked.name + ' 剩余血量:\n' + str(beattacked.blood) + "\n")
+            attacked.minus_blood(self.att)
+        if attacked.blood <= (attacked.maxblood + 10) & attacked.lv == 3:
+            print(attacked.name+ '护盾被打消失')
+        print(attacked.name + ' 被攻击后剩余血量:\n' + str(attacked.blood) + "\n")
         print('---------------------')
 
     def minus_blood(self, num):
@@ -42,36 +42,36 @@ class hero:
 class monster:
     def __init__(self, name, lv, maxblood ):
         self.name = name
-        self.lv = lv # max_lv = 3
+        self.lv = lv # 小兵的级别
         self.maxblood = maxblood
         self.blood = maxblood
         self.blood = self.maxblood + 10
         if self.lv == 1:
-            self.att = rn.randint(0, 10)
+            self.att = rd.randint(0, 10)
         elif self.lv == 2:
-            self.att = rn.randint(0, 20)
+            self.att = rd.randint(0, 20)
         elif self.lv == 3:
-            self.att = rn.randint(0, 30)
+            self.att = rd.randint(0, 30)
 
-    def attack(self, beattacked):
-        if beattacked.has_living():
+    def attack(self, attacked):
+        if attacked.has_living():
             if self.lv == 1:
-                self.att = rn.randint(0, 10)
+                self.att = rd.randint(0, 10)
             elif self.lv == 2:
-                self.att = rn.randint(0, 20)
+                self.att = rd.randint(0, 20)
             elif self.lv == 3:
-                self.att = rn.randint(0, 30)
-            print(self.att)
-            if beattacked.flexibility < rn.random():
-                beattacked.minus_blood(self.att)
+                self.att = rd.randint(0, 30)
+                print(self.att)
+            if attacked.flexibility < rd.random():
+                attacked.minus_blood(self.att)
             else:
-                beattacked.minus_blood(0)
-                print('但是' + beattacked.name + '闪避了攻击！')
-        if beattacked.blood <= (beattacked.maxblood + 10) & beattacked.lv == 3:
-            print(beattacked.name + ' 剩余血量:\n' + str(beattacked.blood) +
-                  '剩余护盾：' + str(beattacked.maxblood + 10 - beattacked.blood) + "\n")
+               attacked.minus_blood(0)
+                print('但是' + attacked.name + '巧妙躲过了攻击！')
+        if attacked.blood <= (attacked.maxblood + 10) & attacked.lv == 3:
+            print(attacked.name + ' 被攻击后剩余血量:\n' + str(attacked.blood) +
+                  '剩余护盾：' + str(attacked.maxblood + 10 - attacked.blood) + "\n")
         else:
-            print(beattacked.name + ' 剩余血量:\n' + str(beattacked.blood) + "\n")
+            print(attacked.name + '被攻击后剩余血量:\n' + str(attacked.blood) + "\n")
         print('---------------------')
 
     def minus_blood(self, num):
@@ -82,10 +82,12 @@ class monster:
             return True
         return False
 
-m1 = monster(name='【小兵】' , lv=1 , maxblood=20) 
+#小兵的种类以及血量的设置
+m1 = monster(name='【小兵】' , lv=1 , maxblood=15) 
 m2 = monster(name='【炮车】' , lv=2 , maxblood=30)  
-m3 = monster(name='【超级兵】' , lv=3 , maxblood=50) 
+m3 = monster(name='【超级兵】' , lv=3 , maxblood=100) 
 mo = [m1,m2,m3]
+#英雄的血量和护盾设置
 h = hero(name='【孙膑】' , lv=3 , race='精灵',maxblood=100)  
 print(h.name + '的初始血量:' + str(h.maxblood) + '他是一个' + h.race)
 for m in mo:
