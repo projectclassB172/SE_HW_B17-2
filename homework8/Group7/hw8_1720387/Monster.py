@@ -25,6 +25,8 @@ class Boss(Person):
     def defence(self, hurt):
         if self._shield > 0:#先进行破防
             self._shield = self._shield - hurt
+            if self._shield < 0:
+                self._shield = 0
         if self._shield <= 0:
             self.set_hp(hurt)
         print('伤害提示:Boss:{},受到{}点伤害'.format(self.get_name(),hurt))

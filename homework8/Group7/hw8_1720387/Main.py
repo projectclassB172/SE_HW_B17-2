@@ -24,7 +24,7 @@ if __name__ == '__main__':
             if hero.get_hp() > 0:
                 # 怪物后手攻击
                 monster.attack(hero)
-                if hero.get_hp() < 0:
+                if hero.get_hp() <= 0:
                     break
             print(hero)
             print(monster)
