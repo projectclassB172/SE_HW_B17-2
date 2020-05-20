@@ -72,6 +72,17 @@ conn.close()
 
 
 
+if __name__ == "__main__":
+    # 连接数据库(如果不存在则创建)
+    conn = sqlite3.connect('address_book.db')
+    print("数据库连接成功！")
+    # 创建游标
+    cr = conn.cursor()
+    db=DB()#创建对象
+    db.main()#调用main方法
+    # 关闭数据库操作
+    cr.close()
+    print("数据库连接已关闭！")
 
 
 
