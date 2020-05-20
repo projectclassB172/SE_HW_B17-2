@@ -17,9 +17,9 @@ except:
 
 #新增联系人；
 try:
-    _name,_phone,_company,_address = input("请依次输入姓名，电话，公司，地址").split()
+    _name,_phone,_company,_address = input("请依次输入姓名、电话、公司、地址").split()
 except:
-    print("输入有误,跳过插入\n")
+    print("输入错误\n")
 else:
     try:
         cursor.execute("Select * From user limit ((select count(id) from user)-1),1")
@@ -30,7 +30,7 @@ else:
         num1=conn.total_changes
         print("{0} rows changed in table addr.".format(num1))
     except:
-        print("请勿插入重复数据\n")
+        print("数据重复\n")
 
 
 
@@ -64,16 +64,12 @@ print("打印全部数据：\n")
 print(users)
 cursor.close()
 conn.close()
-
 if __name__ == "__main__":
-    # 连接数据库(如果不存在则创建)
     conn = sqlite3.connect('address_book.db')
     print("数据库连接成功！")
-    # 创建游标
     cr = conn.cursor()
-    db=DB()#创建对象
-    db.main()#调用main方法
-    # 关闭数据库操作
+    db=DB()
+    db.main()
     cr.close()
     print("数据库连接已关闭！")
 
