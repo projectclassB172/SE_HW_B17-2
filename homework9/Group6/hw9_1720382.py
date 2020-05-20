@@ -11,7 +11,7 @@ import sqlite3
 #   建立连接
 ###
 def connection():
-    conn = sqlite3.connect("C:\\Users\\JackSmith\\Desktop\\PY0515\\PhoneList.db")
+    conn = sqlite3.connect("C:\\用户\\lenove\\Desktop\\hw9\\PhoneList.db")
     print("Opened database successfully")
     return conn
 ###
@@ -180,7 +180,7 @@ while True:
         print("结束程序")
         break
 # 运行结果
-# C:\Users\JackSmith\Desktop\PY0515\venv\Scripts\python.exe C:/Users/JackSmith/Desktop/PY0515/hw9_1720392.py
+# C:\用户\lenovo\Desktop\hw9\venv\Scripts\python.exe C:/用户/lenovo/Desktop/hw9/hw9_1720382.py
 # Opened database successfully
 # Table PHONEList created successfully
 # =========个人通信录小程序==========
@@ -192,9 +192,9 @@ while True:
 # ==================================
 # 请输入您需要的操作数字：1
 # 请依次输入新增联系人的姓名、电话、公司、地址：
-# 姓名：樊崟杰
-# 电话：1720392
-# 公司：Tencent
+# 姓名：蔡跃睿
+# 电话：1720382
+# 公司：MINI
 # 地址：深圳
 # 新增联系人成功！！！
 # =========个人通信录小程序==========
@@ -206,10 +206,10 @@ while True:
 # ==================================
 # 请输入您需要的操作数字：2
 # 按姓名查询联系人详细信息
-# 请输入您要查询的联系人的姓名：樊崟杰
-# 姓名： 樊崟杰
-# 联系方式： 1720392
-# 公司： Tencent
+# 请输入您要查询的联系人的姓名：蔡跃睿
+# 姓名： 蔡跃睿
+# 联系方式： 1720382
+# 公司： MINI
 # 地址： 深圳
 # 联系人查询成功
 # =========个人通信录小程序==========
@@ -226,13 +226,13 @@ while True:
 # 4 代表 修改地址数据
 # 其他任意数字 代表 取消
 # 请输入一个数字代表你要修改数据的方式：4
-# 请输入您要修改的联系人姓名：樊崟杰
-# 请输入新的地址名称：浙江
+# 请输入您要修改的联系人姓名：蔡跃睿
+# 请输入新的地址名称：安徽
 # 修改数据 successfully
-# 姓名： 樊崟杰
-# 联系方式： 1720392
-# 公司： Tencent
-# 地址： 浙江
+# 姓名： 蔡跃睿
+# 联系方式： 1720382
+# 公司： MINI
+# 地址： 安徽
 # =========个人通信录小程序==========
 # 1  新增联系人
 # 2  按姓名查询联系人详细信息
@@ -247,7 +247,7 @@ while True:
 # 4 代表 按照地址删除数据
 # 其他任意数字 代表 取消
 # 请输入一个数字代表你要删除数据的方式：1
-# 请输入您要删除的联系人姓名：樊崟杰
+# 请输入您要删除的联系人姓名：蔡跃睿
 # 删除数据 successfully
 # =========个人通信录小程序==========
 # 1  新增联系人
