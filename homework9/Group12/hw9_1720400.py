@@ -1,5 +1,5 @@
 import sqlite3
-conn = sqlite3.connect('addr.db')
+conn = sqlite3.connect('C:\\wangchuanjun\tel.db')
 print("Opened database successfully")
 cursor = conn.cursor()
 #创建数据库表
@@ -60,12 +60,12 @@ except:
 #打印全部数据
 cursor.execute("SELECT id,name,company,address From user")
 users = cursor.fetchall()
-print("打印全部数据：\n")
+print("打印所有数据：\n")
 print(users)
 cursor.close()
 conn.close()
 if __name__ == "__main__":
-    conn = sqlite3.connect('address_book.db')
+    conn = sqlite3.connect('C:\\wangchuanjun\tel_text.db')
     print("数据库连接成功！")
     cr = conn.cursor()
     db=DB()
