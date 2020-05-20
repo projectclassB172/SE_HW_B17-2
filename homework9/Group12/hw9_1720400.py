@@ -15,7 +15,7 @@ except:
     print("数据表存在\n")
 
 
-#新增联系人；
+#新增联系人
 try:
     _name,_phone,_company,_address = input("请依次输入姓名、电话、公司、地址").split()
 except:
