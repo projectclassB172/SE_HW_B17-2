@@ -25,7 +25,7 @@ else:
         cursor.execute("Select * From user limit ((select count(id) from user)-1),1")
         last_id = cursor.fetchone()
         new_id = last_id[0]+1
-        cursor.execute('''INSERT INTO user (id,name,phone,company,address) VALUES (?,?,?,?,?)''',(new_id,_name,_phone,_company,_address,))
+        cursor.execute("INSERT INTO user (id,name,phone,company,address) VALUES (?,?,?,?,?)",(new_id,_name,_phone,_company,_address,))
         conn.commit()
         num1=conn.total_changes
         print("{0} rows changed in table addr.".format(num1))
