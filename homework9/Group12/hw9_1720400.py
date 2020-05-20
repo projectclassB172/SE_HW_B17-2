@@ -6,18 +6,18 @@ cursor = conn.cursor()
 try:
     conn.execute('''CREATE TABLE USER
     (id INT PRIMARY KEY NOT NULL,
-    name CHAR(20) NOT NULL,
-    phone CHAR(11) NOT NULL,
-    company CHAR(50) NOT NULL,
-    address CHAR(50));''')
+    name CHAR(15) NOT NULL,
+    telephone CHAR(11) NOT NULL,
+    company CHAR(60) NOT NULL,
+    address CHAR(60));''')
     print("Table USER created successfully")
 except:
-    print("数据表存在\n")
+    print("数据表已存在\n")
 
 
-#新增联系人
+#新增联系人信息
 try:
-    _name,_phone,_company,_address = input("请依次输入姓名、电话、公司、地址").split()
+    _name,_telephone,_company,_address = input("请输入姓名、电话、公司、地址").split()
 except:
     print("输入错误\n")
 else:
@@ -25,7 +25,7 @@ else:
         cursor.execute("Select * From user limit ((select count(id) from user)-1),1")
         last_id = cursor.fetchone()
         new_id = last_id[0]+1
-        cursor.execute("INSERT INTO user (id,name,phone,company,address) VALUES (?,?,?,?,?)",(new_id,_name,_phone,_company,_address,))
+        cursor.execute('''INSERT INTO user (id,name,telephone,company,address) VALUES (?,?,?,?,?)''',(new_id,_name,_telephone,_company,_address,))
         conn.commit()
         num1=conn.total_changes
         print("{0} rows changed in table addr.".format(num1))
@@ -38,7 +38,7 @@ else:
 #按姓名查询联系人详细信息
 try:
     name = input("请输入查询人姓名")
-    cursor.execute("SELECT id,name,phone,company,address From user WHERE name=?;",(name,))
+    cursor.execute("SELECT id,name,telephone,company,address From user WHERE name=?;",(name,))
     user = cursor.fetchone()
     print("查询结果:")
     print(user)
@@ -47,9 +47,9 @@ except:
 
 
 
-#删除联系人
+#删除联系人信息
 try:
-    id1 = input("请输入要删除的id:")
+    id1 = input("请输入要删除的联系人id:")
     id1 = int(id1)
     conn.execute("delete from user where ID=?;",(id1,))
     conn.commit()
