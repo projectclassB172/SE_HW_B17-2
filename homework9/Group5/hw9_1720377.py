@@ -26,7 +26,7 @@ def insert(name,tel,company="Google公司",address="硅谷"):
     conn.execute("INSERT INTO CONTACTS(ID,NAME,TEL,COMPANY,ADDRESS) values('%s', '%s','%s', '%s','%s')" % (id, name, tel, company, address))
     conn.commit()
     num = conn.total_changes
-    print("{0} user表中更改的行数.".format(num))
+    print("{0} CONTACTS表中更改的行数.".format(num))
     print("插入成功")
 def select(name):
     conn = sqlite3.connect('D:\\1720377\\add.db')
