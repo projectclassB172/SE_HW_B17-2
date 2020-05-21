@@ -100,7 +100,7 @@ if __name__=='__main__':
 # 请输入6以上的整数id:7
 # 请输入您要插入的联系人名字：如意
 # 请输入您要插入的联系人电话：147852369
-# 7 rows changed in table USER.
+# 7 rows changed in table CONTACTS.
 # Insert operation successfully
 # ----------------- 按姓名查询联系人详细信息 -----------------
 # 请输入你要查询的联系人名字:如意
