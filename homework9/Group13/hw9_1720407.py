@@ -37,7 +37,7 @@ def t_insert(id,name,tel,company="微软上海分公司",address="上海市静�
     conn.execute("INSERT INTO CONTACTS(ID,NAME,TEL,COMPANY,ADDRESS) values('%s', '%s','%s', '%s','%s')" % (id,name,tel,company,address))
     conn.commit()
     num = conn.total_changes
-    print("{0} rows changed in table USER.".format(num))
+    print("{0} rows changed in table CONTACTS.".format(num))
     print("Insert operation successfully")
 def t_select(name):
     conn = sqlite3.connect('D:\\temp\\zy\\addressList.db')
